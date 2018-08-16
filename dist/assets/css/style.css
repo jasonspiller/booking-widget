@@ -1,6 +1,6 @@
 .hero {
   padding: 2rem;
-  background: url("/assets/img/temp-bg.jpg") scroll no-repeat center center;
+  background: url("../img/temp-bg.jpg") scroll no-repeat center center;
   background-size: cover;
   color: #fff;
 }
