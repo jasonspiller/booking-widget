@@ -1,1 +1,1 @@
-# booking-widgt
+# booking-widget
