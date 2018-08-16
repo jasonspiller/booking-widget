@@ -20,17 +20,25 @@ gulp.task('css', function() {
 
 // processes images
 gulp.task('images', function() {
-  return gulp.src('src/assets/img/*')
+  return gulp.src('src/assets/img/**/*')
     .pipe(imagemin())
     .pipe(gulp.dest('dist/assets/img'))
 });
 
-// copy task to copy any other files
-gulp.task('copy', function() {
-  return gulp.src('src/**/*.+(html|htm|js)')
+// copy task to copy js files
+gulp.task('copyJS', function() {
+  return gulp.src('src/assets/js/**/*.+(js)')
+    .pipe(gulp.dest('dist/assets/js'))
+    .pipe(browserSync.stream())
+});
+
+// copy task to copy html files
+gulp.task('copyHTML', function() {
+  return gulp.src('src/**/*.+(html|htm)')
     .pipe(gulp.dest('dist/'))
     .pipe(browserSync.stream())
 });
+
 
 // initiate BrowserSync
 gulp.task('browserSync', function() {
@@ -45,6 +53,7 @@ gulp.task('browserSync', function() {
 // watch task to monitor files
 gulp.task('watch', ['browserSync', 'css', 'images'], function() {
   gulp.watch('src/assets/scss/**/*.scss', ['css'])
-  gulp.watch('src/assets/**/*.+(jpg|png|gif|svg)', ['images'])
-  gulp.watch('src/assets/**/*.+(html|htm|js)', ['copy'])
+  gulp.watch('src/assets/img/*.+(jpg|png|gif|svg)', ['images'])
+  gulp.watch('src/assets/js/**/*.+(js)', ['copyJS'])
+  gulp.watch('src/**/*.+(html|htm)', ['copyHTML'])
 });
