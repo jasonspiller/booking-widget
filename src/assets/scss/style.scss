@@ -8,10 +8,11 @@
 
 form {
   margin: 0 auto;
-  width: 70%;
+  width: 90%
 }
 
 .rooms {
+  white-space: nowrap;
   font-size: 1.25rem;
 }
 
@@ -82,12 +83,14 @@ form {
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-  
+  form {
+    width: 70%;
+  }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-  
+
 }
 
 // Large devices (desktops, 992px and up)
