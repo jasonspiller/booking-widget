@@ -31,37 +31,41 @@
 
         <form>
           
-          <div class="row mb-3">
-            <div class="col-md-3 font-weight-bold mb-2">Bedrooms: <span id="bedrooms"></span></div>
+          <div class="row mb-4">
+            <div class="col-md-3 font-weight-bold mb-3 rooms">Bedrooms: <span id="bedrooms"></span></div>
             <div class="col-md-9"><input type="range" min="1" max="7" value="1" class="slider" name="bedrooms" id="bedroomSlider"></div>
           </div> 
 
           <div class="row mb-4">
-            <div class="col-md-3 font-weight-bold mb-2">Bathrooms: <span id="bathrooms"></span></div>
+            <div class="col-md-3 font-weight-bold mb-3 rooms">Bathrooms: <span id="bathrooms"></span></div>
             <div class="col-md-9"><input type="range" min="1" max="7" value="1" class="slider" name="bathrooms" id="bathroomSlider"></div>
           </div> 
    
           <div class="row mb-3"> 
             <div class="col text-center mb-2">
-              <button class="btn btn-block">Weekly cleaning</button>
-              20% off
+              <button class="btn btn-lg btn-block interval" id="weekly">Weekly cleaning</button>
+              <span class="discount-amount">20% off</span>
             </div>
             <div class="col text-center mb-2">
-              <button class="btn btn-block">Bi-weekly cleaning</button>
-              15% off
+              <button class="btn btn-lg btn-block interval" id="bi-weekly">Bi-weekly cleaning</button>
+              <span class="discount-amount">15% off</span>
             </div>
             <div class="col text-center mb-2">
-              <button class="btn btn-block">Monthly cleaning</button>
-              10% off
+              <button class="btn btn-lg btn-block interval" id="monthly">Monthly cleaning</button>
+              <span class="discount-amount">10% off</span>
             </div>
             <div class="col text-center mb-2">
-              <button class="btn btn-block">One time cleaning</button>
+              <button class="btn btn-lg btn-block interval selected" id="one-time">One time cleaning</button>
             </div>
           </div>
 
           <div class="row">
+            <div class="col text-center quote-total">$<span id="quote"></span></div>
+          </div>
+
+          <div class="row">
             <div class="col text-center">
-              <button class="btn btn-lg bg-primary text-white" id="submit">Ready to Book? <strong>Get a call in 10 minutes or less.</strong></button>
+              <button class="btn btn-lg bg-primary p-4 text-white" id="submit">Ready to Book? <strong>Get a call in 10 minutes or less.</strong></button>
             </div>
           </div>
 
