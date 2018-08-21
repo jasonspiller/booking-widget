@@ -2,84 +2,125 @@
 
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title></title>
+  <title></title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css">
 
-  </head>
-
-
-  <body>
+</head>
 
 
-    <section class="hero">
-      <div class="container-fluid">
+<body>
 
-        <div class="row mb-3">
-          <div class="col text-center">
-            <h1>Maid and cleaning service in Portland, Oregon</h1>
-            <p>Select the number of bedrooms and bathrooms, set your interval, see your price, hear from us in 10 minutes or less!</p>
-          </div>
+
+  <section class="hero">
+    <div class="container-fluid">
+
+      <div class="row mb-3">
+        <div class="col text-center">
+          <h1>Maid and cleaning service in Portland, Oregon</h1>
+          <p>Select the number of bedrooms and bathrooms, set your interval, see your price, hear from us in 20 minutes or
+            less!</p>
         </div>
-
-        <form>
-          
-          <div class="row mb-4">
-            <div class="col-md-3 font-weight-bold mb-3 rooms">Bedrooms: <span id="bedrooms"></span></div>
-            <div class="col-md-9"><input type="range" min="1" max="7" value="1" class="slider" name="bedrooms" id="bedroomSlider"></div>
-          </div> 
-
-          <div class="row mb-4">
-            <div class="col-md-3 font-weight-bold mb-3 rooms">Bathrooms: <span id="bathrooms"></span></div>
-            <div class="col-md-9"><input type="range" min="1" max="7" value="1" class="slider" name="bathrooms" id="bathroomSlider"></div>
-          </div> 
-   
-          <div class="row mb-3"> 
-            <div class="col text-center mb-2">
-              <button class="btn btn-lg btn-block interval" id="weekly">Weekly cleaning</button>
-              <span class="discount-amount">20% off</span>
-            </div>
-            <div class="col text-center mb-2">
-              <button class="btn btn-lg btn-block interval" id="bi-weekly">Bi-weekly cleaning</button>
-              <span class="discount-amount">15% off</span>
-            </div>
-            <div class="col text-center mb-2">
-              <button class="btn btn-lg btn-block interval" id="monthly">Monthly cleaning</button>
-              <span class="discount-amount">10% off</span>
-            </div>
-            <div class="col text-center mb-2">
-              <button class="btn btn-lg btn-block interval selected" id="one-time">One time cleaning</button>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col text-center quote-total">$<span id="quote"></span></div>
-          </div>
-
-          <div class="row">
-            <div class="col text-center">
-              <button class="btn btn-lg bg-primary p-4 text-white" id="submit">Ready to Book? <strong>Get a call in 10 minutes or less.</strong></button>
-            </div>
-          </div>
-
-        </form>
-
       </div>
-    </section>
+
+      <div class="row mb-4">
+        <div class="col-md-3 font-weight-bold mb-3 rooms">Bedrooms: <span id="bedrooms"></span></div>
+        <div class="col-md-9"><input type="range" min="1" max="7" value="1" class="slider" name="bedrooms" id="bedroomSlider"></div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-3 font-weight-bold mb-3 rooms">Bathrooms: <span id="bathrooms"></span></div>
+        <div class="col-md-9"><input type="range" min="1" max="7" value="1" class="slider" name="bathrooms" id="bathroomSlider"></div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col text-center mb-2">
+          <button class="btn btn-lg btn-block interval" id="weekly">Weekly cleaning</button>
+          <span class="discount-amount">20% off</span>
+        </div>
+        <div class="col text-center mb-2">
+          <button class="btn btn-lg btn-block interval" id="bi-weekly">Bi-weekly cleaning</button>
+          <span class="discount-amount">15% off</span>
+        </div>
+        <div class="col text-center mb-2">
+          <button class="btn btn-lg btn-block interval" id="monthly">Monthly cleaning</button>
+          <span class="discount-amount">10% off</span>
+        </div>
+        <div class="col text-center mb-2">
+          <button class="btn btn-lg btn-block interval selected" id="one-time">One time cleaning</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-center quote-total">$<span class="quote"></span></div>
+      </div>
+
+      <div class="row">
+        <div class="col text-center">
+          <button class="btn btn-lg p-3 cta" data-toggle="modal" data-target="#quoteModal">Ready to Book?
+            <strong>Next day service available.</strong></button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="quoteModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Quote Request</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col quote-modal mb-3"><strong>Your estimate is $<span class="quote"></span></strong>. Please note
+              that homes and needs can vary from client to client. This is an only an estimate. We want to make sure we are
+              meeting your needs. A final quote will be provided on arrival.</div>
+          </div>
+          <form>
+            <div class="form-group">
+              <label for="name" class="col-form-label">Name</label>
+              <input type="text" class="form-control form-control-lg" id="name" autofocus>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-form-label">Email</label>
+              <input type="text" class="form-control form-control-lg" id="email">
+            </div>
+            <div class="form-group">
+              <label for="phone" class="col-form-label">Phone</label>
+              <input type="text" class="form-control form-control-lg" id="phone">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer justify-content-center mb-3">
+          <button type="button" class="btn btn-lg p3 cta" data-dismiss="modal">Get a call or email in 20 minutes or
+            less!</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="assets/js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="assets/js/main.js"></script>
 
-  </body>
+</body>
 
 </html>

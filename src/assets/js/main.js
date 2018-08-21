@@ -4,42 +4,39 @@ console.log('Hello Dave.');
 // jquery ready
 $(function(){
 
-  var bedroomSliderValue = document.getElementById("bedroomSlider");
-  bedrooms.innerHTML = bedroomSliderValue.value;
-  var bathroomSliderValue = document.getElementById("bathroomSlider");
-  bathrooms.innerHTML = bathroomSliderValue.value;
-  var quoteTotal = 0;
-  var discount = 0;
-  quote.innerHTML = quoteTotal; 
+  var bedroomTotal = document.getElementById('bedroomSlider'),
+      bathroomTotal = document.getElementById('bathroomSlider'),
+      pricing,
+      discount = 0,
+      estimate = 0;
 
+  // output values to UI
+  bedrooms.innerHTML = bedroomTotal.value;
+  bathrooms.innerHTML = bathroomTotal.value;
+  
 
   // calculate quote total
-  function calculateQuote(bedroomCount, bathroomCount, discountAmount) {
-
-    var costPerHour = 50;
-    var timePerBedroom = 30;
-    var timePerBathroon = 20;
+  function calculateQuote() {
 
     // calculate total cost
-    quoteTotal = ((bedroomCount * timePerBedroom + bathroomCount * timePerBathroon) / 60) * costPerHour;
+    estimate = pricing[bedroomTotal.value][bathroomTotal.value];
 
     // apply discount
-    quoteTotal -= (quoteTotal * discountAmount);
+    estimate -= (estimate * discount);
 
     // round to nearest dollar and output
-    quote.innerHTML = Math.round(quoteTotal); 
+    $('.quote').html(Math.round(estimate));
   }
-  
 
   // update room values
   bedroomSlider.oninput = function() {
-    bedrooms.innerHTML = bedroomSliderValue.value;
-    calculateQuote(bedroomSliderValue.value, bathroomSliderValue.value, discount)
+    bedrooms.innerHTML = bedroomTotal.value;
+    calculateQuote()
   }
 
   bathroomSlider.oninput = function() {
-    bathrooms.innerHTML = bathroomSliderValue.value;
-    calculateQuote(bedroomSliderValue.value, bathroomSliderValue.value, discount)
+    bathrooms.innerHTML = bathroomTotal.value;
+    calculateQuote()
   }
 
   // get discount, if any
@@ -50,6 +47,7 @@ $(function(){
     $('.interval').removeClass('selected');    
     $(this).addClass('selected');
 
+    // determine discount value
     switch($(this).attr('id')) {
       case 'weekly':
           discount = .20;
@@ -64,10 +62,27 @@ $(function(){
           discount = 0;
     }
 
-    calculateQuote(bedroomSliderValue.value, bathroomSliderValue.value, discount)
+    calculateQuote()
 
   });
 
-  calculateQuote(bedroomSliderValue.value, bathroomSliderValue.value, discount)
+  $.ajax({
+    type: 'GET',
+    dataType: "json",
+    url: "/pricing.json",
+    success: function(result) {
+      pricing = result;
+      calculateQuote();
+    },
+    error: function() {
+      alert('Unable to retrieve pricing. Please try again later.');
+    }
+  });
+  
+
+  // add focus to name on modal
+  $('#quoteModal').on('shown.bs.modal', function() {
+    $('#name').trigger('focus');
+  });
 
 });
