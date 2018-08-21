@@ -69,7 +69,7 @@ $(function(){
   $.ajax({
     type: 'GET',
     dataType: "json",
-    url: "/pricing.json",
+    url: "pricing.json",
     success: function(result) {
       pricing = result;
       calculateQuote();
